@@ -16,13 +16,13 @@ export class HolidayRequestsService {
         const thisApiEndpoint = EndpointsEnum.HOLIDAY_REQUESTS_LIST;
         const baseUrl = EndpointsEnum.BASE_URL;
         if(mock){
-            const holidayRequests = [ new RequestHoliday(0,new Date(),new Date(),'chroba dziecka',new Date(),new Date(), new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Zaakceptowany')),
-            new RequestHoliday(1,new Date(),new Date(),'wakacje',new Date(),new Date(),new TypeHolidayRequest(-1,'wypoczynkowy'),new StatusHolidayRequest(-1,'Zaakceptowany')),
-            new RequestHoliday(2,new Date(),new Date(),'chroba',new Date(),new Date(),new TypeHolidayRequest(-1,'zdrowotny'),new StatusHolidayRequest(-1,'Zaakceptowany')),
-            new RequestHoliday(3,new Date(),new Date(),'sprawy urzędowe',new Date(),new Date(),new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Zaakceptowany')),
-            new RequestHoliday(4,new Date(),new Date(),'sprawy prywatne',new Date(),new Date(),new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Odrzucony')),
-            new RequestHoliday(5,new Date(),new Date(),'chroba dziecka',new Date(),new Date(),new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Zaakceptowany')),
-            new RequestHoliday(6,new Date(),new Date(),'wakacje',new Date(),new Date(),new TypeHolidayRequest(-1,'wypoczynkowy'),new StatusHolidayRequest(-1,'Zaakceptowany')),];
+            const holidayRequests = [ new RequestHoliday(0,'email_test@gmail.com',new Date(),new Date(),'chroba dziecka',new Date(),new Date(), new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Zaakceptowany')),
+            new RequestHoliday(1,'email_test@gmail.com',new Date(),new Date(),'wakacje',new Date(),new Date(),new TypeHolidayRequest(-1,'wypoczynkowy'),new StatusHolidayRequest(-1,'Zaakceptowany')),
+            new RequestHoliday(2,'email_test@gmail.com',new Date(),new Date(),'chroba',new Date(),new Date(),new TypeHolidayRequest(-1,'zdrowotny'),new StatusHolidayRequest(-1,'Zaakceptowany')),
+            new RequestHoliday(3,'email123@o2.pl',new Date(),new Date(),'sprawy urzędowe',new Date(),new Date(),new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Zaakceptowany')),
+            new RequestHoliday(4,'email123@o2.pl',new Date(),new Date(),'sprawy prywatne',new Date(),new Date(),new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Odrzucony')),
+            new RequestHoliday(5,'email123@o2.pl',new Date(),new Date(),'chroba dziecka',new Date(),new Date(),new TypeHolidayRequest(-1,'na żadanie'),new StatusHolidayRequest(-1,'Zaakceptowany')),
+            new RequestHoliday(6,'email123@o2.pl',new Date(),new Date(),'wakacje',new Date(),new Date(),new TypeHolidayRequest(-1,'wypoczynkowy'),new StatusHolidayRequest(-1,'Zaakceptowany')),];
             return of(holidayRequests);
         } else {
             return this.requestSend.getRequest(params,thisApiEndpoint,baseUrl);
