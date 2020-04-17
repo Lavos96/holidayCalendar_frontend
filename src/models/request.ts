@@ -3,6 +3,7 @@ import { StatusHolidayRequest } from './status';
 
 export class RequestHoliday{
     id:number;
+    employee:string;
     startDate:Date;
     endDate:Date;
     reason:string;
@@ -11,8 +12,9 @@ export class RequestHoliday{
     type: TypeHolidayRequest;
     status: StatusHolidayRequest;
 
-    constructor(id,startDate,endDate,reason,requested,lastChange,type,status){
+    constructor(id,employee,startDate,endDate,reason,requested,lastChange,type,status){
         this.id = id;
+        this.employee = employee;
         this.startDate = startDate;
         this.endDate = endDate;
         this.reason = reason;
