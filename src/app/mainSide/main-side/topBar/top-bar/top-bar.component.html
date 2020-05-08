@@ -1,10 +1,16 @@
 <div class="topBar">
     <div class="logo-with-menu">
-    <mat-icon class="logo">deck</mat-icon>
-    <span>Holidays Calendar</span>
-    <button mat-icon-button aria-label="menu button">
-        <mat-icon>menu</mat-icon>
-    </button>
+        <mat-icon (click)="moveToMainPage()" class="logo">deck</mat-icon>
+        <span (click)="moveToMainPage()" class="companyName">Holidays Calendar</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu button">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="moveToHolidayRequestCreation()">
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Zgłoś wniosek urlopowy</span>
+            </button>
+        </mat-menu>
     </div>
     <div>
 

@@ -14,4 +14,13 @@ export class RequestSend {
             return this.http.get<any>(url);
         }
     }
+
+    public postRequest(params:any,thisApiID:string,basePath:string,body:any){
+        const url = basePath+thisApiID;
+        if(params!==null){
+        return this.http.post<any>(url,{observe: 'response',body, headers: params.headers, params: params.queryParams});
+        } else {
+            return this.http.post<any>(url,body);
+        }
+    }
 }
