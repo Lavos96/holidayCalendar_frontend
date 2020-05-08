@@ -32,4 +32,8 @@ export class TopBarComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
+  moveToMyHolidayRequests(){
+    this.router.navigateByUrl('myHolidaysRequest');
+  }
+
 }

@@ -40,14 +40,11 @@ export class CreateHolidaysRequestComponent implements OnInit {
       this.statuses = statuses;
     })
     this.holidayRequestService.getHolidayRequestsByUserList(null,{email:'email_test@gmail.com'},false).subscribe((requests)=>{
-      console.log('Requestu usera email_test@gmail.com :', requests );
     })
   }
 
   onSubmit(){
     const requestesStatus = this.statuses.find(status=> status.id===1);
-    console.log('!!!', this.keyCloakUserInfo.keyCloakUserProfile);
-    console.log('TYP', this.holidayRequestForm.get('type').value.id);
     const holidayReq = {id:0,
       employee: this.keyCloakUserInfo.keyCloakUserProfile.email,
       startDate: this.holidayRequestForm.get('startDate').value.add(2,'hour').toISOString(),
@@ -57,7 +54,6 @@ export class CreateHolidaysRequestComponent implements OnInit {
       lastChange: moment().add(2,'hour').toISOString(),
       typeId: this.holidayRequestForm.get('type').value.id,
       statusId: requestesStatus.id};
-    console.log('holidayReq: ', holidayReq)
     this.holidayRequestService.postHolidayRequest(null,holidayReq,false).subscribe((holidayRequest)=>{
       console.log('Sended', holidayRequest);
       this.router.navigateByUrl('');

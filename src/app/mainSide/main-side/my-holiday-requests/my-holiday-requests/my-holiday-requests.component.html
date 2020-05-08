@@ -1,29 +1,5 @@
 <div class="container">
-    <div class="tableFilters">
-        <div class="typeFilter">
-            <mat-form-field>
-                <mat-label>Typ urlopu</mat-label>
-                <mat-select #typesFilter (selectionChange)="onFilter()">
-                    <mat-option *ngFor="let type of holidayTypes" [value]="type">
-                        {{type.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-chip-list aria-label="Request status selection">
-                <mat-checkbox (change)="onFilter()" *ngFor="let status of statusesToDisplay" class="filter-opt" [(ngModel)]="status.checked">
-                    <mat-chip [class]="status.class">{{status.status.name}}</mat-chip>
-                </mat-checkbox>
-            </mat-chip-list>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Wyszukaj po zgłaszającym</mat-label>
-                <input [(ngModel)]="inputEmployeeFilterValue" #inputEmployee matInput (input)="onSearchChange($event.target.value)">
-            </mat-form-field>
-        </div>
-    </div>
+
     <div class="table">
 
         <div class="mat-elevation-z8">
@@ -87,16 +63,20 @@
             </ng-container>
 
             <!-- status Column -->
-            <ng-container matColumnDef="action">
-                <th [hidden]="!isAdmin" mat-header-cell *matHeaderCellDef> Akcje </th>
-                <td [hidden]="!isAdmin"  mat-cell *matCellDef="let element">
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu button">
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Akcje </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu button" [disabled]="element.status.id!==1">
                         <mat-icon>menu</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item (click)="editHolidayRequest(element)">
-                            <mat-icon>edit_attributes</mat-icon>
-                        <span>Zarządzaj wnioskiem</span>
+                            <mat-icon>edit</mat-icon>
+                            <span>Edytuj wniosek</span>
+                        </button>
+                        <button mat-menu-item (click)="onCancelHolidayRequest(element)">
+                            <mat-icon>cancel</mat-icon>
+                            <span>Anuluj wniosek</span>
                         </button>
                     </mat-menu>
                 </td>
@@ -108,8 +88,5 @@
 
         <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
         </div>
-    </div>
-    <div class="clearFiltersBtn">
-    <button (click)="onClearFilters()" mat-raised-button>Wyczyść filtrowanie tabeli</button>
     </div>
 </div>

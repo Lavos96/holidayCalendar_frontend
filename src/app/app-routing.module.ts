@@ -4,6 +4,8 @@ import { AppAuthGuard } from 'src/services/appAuthGuard.service';
 import { AppComponent } from './app.component';
 import { CreateHolidaysRequestComponent } from './mainSide/main-side/create-holidays-request/create-holidays-request.component';
 import { MainTableComponent } from './mainSide/main-side/mainTable/main-table/main-table.component';
+import { MyHolidayRequestsComponent } from './mainSide/main-side/my-holiday-requests/my-holiday-requests/my-holiday-requests.component';
+import { EditHolidayRequestComponent } from './mainSide/edit-holiday-request/edit-holiday-request/edit-holiday-request.component';
 
 
 const routes: Routes = [
@@ -40,6 +42,14 @@ const routes: Routes = [
   {
     path: 'createHolidaysRequest',
     component: CreateHolidaysRequestComponent
+  },
+  {
+    path: 'myHolidaysRequest',
+    component: MyHolidayRequestsComponent
+  },
+  {
+    path: 'editHolidayRequest',
+    component: EditHolidayRequestComponent
   },
   {path:'', component: MainTableComponent , pathMatch: 'full'},
   {path:'**', component:MainTableComponent}

@@ -1,0 +1,58 @@
+<div class="container">
+    <form class="form" [formGroup]="holidayRequestForm" (ngSubmit)="onSubmit()">
+
+        <h2>Edycja Wniosku urlopowego</h2>
+
+        <mat-form-field class="input">
+            <mat-label>Data rozpoczęcia</mat-label>
+            <input matInput [matDatepicker]="startDate" [matDatepickerFilter]="dateFilter" formControlName="startDate" disabled>
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate disabled="false"></mat-datepicker>
+            <mat-error *ngIf="holidayRequestForm?.controls['startDate'].hasError('required') ">Musisz podać datę rozpoczęcia urlopu!</mat-error>
+            <mat-error *ngIf="holidayRequestForm?.controls['startDate'].hasError('notValidDate')">To nie jest poprawny format daty!</mat-error>
+            <mat-error *ngIf="holidayRequestForm?.controls['startDate'].hasError('weekendError')">Urlop nie może się zaczynać w weekend!</mat-error>
+            <mat-error *ngIf="holidayRequestForm?.controls['startDate'].hasError('startDateIsNotBeforeEndDate')">Data rozpoczęcia musi poprzedzać datę zakończenia!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input">
+            <mat-label>Data zakończenia</mat-label>
+            <input matInput [matDatepicker]="endDate" [matDatepickerFilter]="endDateFilter" formControlName="endDate" disabled>
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate  disabled="false"></mat-datepicker>
+            <mat-error *ngIf="holidayRequestForm?.controls['endDate'].hasError('required') ">Musisz podać datę rozpoczęcia urlopu!</mat-error>
+            <mat-error *ngIf="holidayRequestForm?.controls['endDate'].hasError('notValidDate')">To nie jest poprawny format daty!</mat-error>
+            <mat-error *ngIf="holidayRequestForm?.controls['endDate'].hasError('weekendError')">Urlop nie może kończyć się w weekend!</mat-error>
+            <mat-error *ngIf="holidayRequestForm?.controls['endDate'].hasError('endDateIsNotAfterStartDate')">Data zakończenia musi następować po dacie rozpoczęcia!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input">
+            <mat-label>Powód</mat-label>
+            <input matInput placeholder="Powód" formControlName="reason">
+            <mat-error>Musisz podać powód zgłoszenia urlopu!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input">
+            <mat-label>Typ urlopu</mat-label>
+                <mat-select #typesFilter formControlName="type" [(value)]="selectedType" [compareWith]="compareFunction">
+                    <mat-option *ngFor="let type of holidayTypes" [value]="type">
+                        {{type.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>Musisz podać typ urlopu!</mat-error>
+        </mat-form-field>
+
+        <div [hidden]="!isAdmin">
+        <mat-form-field class="input">
+            <mat-label>Status wniosku</mat-label>
+                <mat-select #typesFilter formControlName="status" [(value)]="selectedStatus" [compareWith]="compareFunction">
+                    <mat-option *ngFor="let status of statuses" [value]="status">
+                        {{status.name}}
+                    </mat-option>
+                </mat-select>
+        </mat-form-field>
+        </div>
+
+        <button [disabled]="!holidayRequestForm.valid || holidayRequestForm.pristine || checkIfValuesAreDifferent()" mat-raised-button type="submit">Zatwierdź edycję</button>
+
+    </form>
+</div>

@@ -30,7 +30,6 @@ export class HolidayRequestsService {
     }
 
     public postHolidayRequest(params:any,body: any, mock: boolean){
-        console.log('Bodi:', body);
         const thisApiEndpoint = EndpointsEnum.HOLIDAY_REQUEST_POST;
         const baseUrl = EndpointsEnum.BASE_URL;
         if(mock){
@@ -54,6 +53,16 @@ export class HolidayRequestsService {
             return of(holidayRequests);
         } else {
             return this.requestSend.postRequest(params,thisApiEndpoint,baseUrl,body);
+        }
+    }
+
+    public modifiyHolidayRequest(params: any, body: any, mock: boolean){
+        const thisApiEndpoint = EndpointsEnum.HOLIDAY_REQUEST_PUT+body.id.toString();
+        const baseUrl = EndpointsEnum.BASE_URL;
+        if(mock){
+            return of(body);
+        } else {
+            return this.requestSend.putRequest(params,thisApiEndpoint,baseUrl,body);
         }
     }
 }
