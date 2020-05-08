@@ -56,7 +56,8 @@ export class MainTableComponent implements OnInit {
       });
     })
     this.displayedColumns = ['id', 'employee', 'startDate', 'endDate', 'reason', 'requested', 'lastChange', 'type', 'status'];
-    this.holidaysRequests.getCategoriesList(null, false).subscribe((holidaysRequests) => {
+    this.holidaysRequests.getRequestsList(null, false).subscribe((holidaysRequests) => {
+      console.log('HolidayRequests: ', holidaysRequests);
       this.dataSource.data = holidaysRequests;
     })
     this.dataSource.paginator = this.paginator;
@@ -64,7 +65,7 @@ export class MainTableComponent implements OnInit {
 
   onFilter() {
     // pobieramy liste requestów z backendu
-    this.holidaysRequests.getCategoriesList(null, false).subscribe((requests) => {
+    this.holidaysRequests.getRequestsList(null, false).subscribe((requests) => {
       //sprawdzamy czy jest zaznaczony jakis filtr typu, jesli jest to filtrujemy odpowiedz po typie
       if (this.typesFilter.value!==undefined) {
         requests=requests.filter((elem) => {
@@ -121,8 +122,9 @@ export class MainTableComponent implements OnInit {
     });
     this.inputEmployeeFilter.value = null;
     this.inputEmployeeFilterValue = '';
-    this.holidaysRequests.getCategoriesList(null,false).subscribe((requests)=>{
+    this.holidaysRequests.getRequestsList(null,false).subscribe((requests)=>{
       this.dataSource.data = requests;
+      this.dataSource.filter = null;
     })
   }
 

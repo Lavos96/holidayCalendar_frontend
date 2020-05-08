@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppAuthGuard } from 'src/services/appAuthGuard.service';
 import { AppComponent } from './app.component';
+import { CreateHolidaysRequestComponent } from './mainSide/main-side/create-holidays-request/create-holidays-request.component';
+import { MainTableComponent } from './mainSide/main-side/mainTable/main-table/main-table.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,7 @@ const routes: Routes = [
     canActivate: [AppAuthGuard], 
     data: { roles: ['SuperUser', 'NormalUser'] }
   },*/
-  { 
+  /*{ 
     path: '', 
     //loadChildren: () => SomeOtherModule ,
     redirectTo: '',
@@ -25,7 +27,22 @@ const routes: Routes = [
     component: AppComponent,
     canActivate: [AppAuthGuard], 
     data: { roles: ['admin', 'employer'] }
+  },*/
+  { 
+    path: '', 
+    //loadChildren: () => SomeOtherModule ,
+    redirectTo: '',
+    pathMatch: 'full',
+    component: MainTableComponent,
+    canActivate: [AppAuthGuard], 
+    data: { roles: ['admin', 'employer'] }
   },
+  {
+    path: 'createHolidaysRequest',
+    component: CreateHolidaysRequestComponent
+  },
+  {path:'', component: MainTableComponent , pathMatch: 'full'},
+  {path:'**', component:MainTableComponent}
 ];
 
 @NgModule({

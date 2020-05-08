@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,7 +9,8 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class TopBarComponent implements OnInit {
 
-  constructor(protected keycloakAngular: KeycloakService) { }
+  constructor(protected keycloakAngular: KeycloakService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +22,14 @@ export class TopBarComponent implements OnInit {
       })
       console.log('Logout: ')
     })
+  }
+
+  moveToHolidayRequestCreation(){
+    this.router.navigateByUrl('createHolidaysRequest');
+  }
+
+  moveToMainPage(){
+    this.router.navigateByUrl('');
   }
 
 }
