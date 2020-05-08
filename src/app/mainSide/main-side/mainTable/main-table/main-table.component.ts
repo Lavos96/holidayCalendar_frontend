@@ -7,6 +7,11 @@ import { StatusesOfHolidaysRequestsService } from 'src/services/http/statusesOfH
 import { StatusHolidayRequest } from 'src/models/status';
 import { MatSelect } from '@angular/material/select';
 import { MatInput } from '@angular/material/input';
+import { MatSort } from '@angular/material/sort';
+import { KeycloakService } from 'keycloak-angular';
+import { RequestHoliday } from 'src/models/request';
+import { CommunicationBetweenComponentsService } from 'src/services/communicationBetweenComponentsService.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-table',
@@ -21,18 +26,24 @@ export class MainTableComponent implements OnInit {
   displayedColumns: string[];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   inputEmployeeFilterValue: string = '';
+  isAdmin:boolean;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild('typesFilter') typesFilter: MatSelect;
   @ViewChild('inputEmployee') inputEmployeeFilter: MatInput;
 
   constructor(private holidaysRequests: HolidayRequestsService,
     private typesOfHolidaysRequest: TypesOfHolidaysService,
-    private statusesOfHolidaysRequests: StatusesOfHolidaysRequestsService,) { }
+    private statusesOfHolidaysRequests: StatusesOfHolidaysRequestsService,
+    private keycloakService: KeycloakService,
+    private communicationBetweenComponenstService: CommunicationBetweenComponentsService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.typesOfHolidaysRequest.getTypesList(null, false).subscribe((types) => {
       this.holidayTypes = types;
-    })
+    });
+    this.isAdmin = this.keycloakService.isUserInRole('admin');
     this.statusesOfHolidaysRequests.getStatusesList(null, false).subscribe((statuses) => {
       this.statuses = statuses;
       this.statuses.forEach(status => {
@@ -55,12 +66,12 @@ export class MainTableComponent implements OnInit {
         }
       });
     })
-    this.displayedColumns = ['id', 'employee', 'startDate', 'endDate', 'reason', 'requested', 'lastChange', 'type', 'status'];
+    this.displayedColumns = ['id', 'employee', 'startDate', 'endDate', 'reason', 'requested', 'lastChange', 'type', 'status', 'action'];
     this.holidaysRequests.getRequestsList(null, false).subscribe((holidaysRequests) => {
-      console.log('HolidayRequests: ', holidaysRequests);
       this.dataSource.data = holidaysRequests;
     })
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   onFilter() {
@@ -126,6 +137,11 @@ export class MainTableComponent implements OnInit {
       this.dataSource.data = requests;
       this.dataSource.filter = null;
     })
+  }
+
+  editHolidayRequest(element: RequestHoliday){
+    this.communicationBetweenComponenstService.requestToEditBehSubject.next(element);
+    this.router.navigateByUrl('editHolidayRequest');
   }
 
 }

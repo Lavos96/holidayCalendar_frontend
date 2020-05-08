@@ -29,6 +29,11 @@ import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MyHolidayRequestsComponent } from './mainSide/main-side/my-holiday-requests/my-holiday-requests/my-holiday-requests.component';
+import { MatSortModule } from '@angular/material/sort';
+import { EditHolidayRequestComponent } from './mainSide/edit-holiday-request/edit-holiday-request/edit-holiday-request.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './mainSide/confirmation-dialog/confirmation-dialog/confirmation-dialog.component';
 
 
 registerLocaleData(localePl, 'pl-Pl');
@@ -43,6 +48,9 @@ const keycloakService = new KeycloakService();
     MainTableComponent,
     BottomBarComponent,
     CreateHolidaysRequestComponent,
+    MyHolidayRequestsComponent,
+    EditHolidayRequestComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +73,8 @@ const keycloakService = new KeycloakService();
     ReactiveFormsModule,
     MatNativeDateModule,
     MatMomentDateModule,
+    MatSortModule,
+    MatDialogModule,
   ],
   providers: [
     {
