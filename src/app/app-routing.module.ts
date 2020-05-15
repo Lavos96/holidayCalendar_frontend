@@ -6,6 +6,7 @@ import { CreateHolidaysRequestComponent } from './mainSide/main-side/create-holi
 import { MainTableComponent } from './mainSide/main-side/mainTable/main-table/main-table.component';
 import { MyHolidayRequestsComponent } from './mainSide/main-side/my-holiday-requests/my-holiday-requests/my-holiday-requests.component';
 import { EditHolidayRequestComponent } from './mainSide/edit-holiday-request/edit-holiday-request/edit-holiday-request.component';
+import { FullCalendarViewComponent } from './mainSide/main-side/full-calendar/full-calendar-view/full-calendar-view.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'editHolidayRequest',
     component: EditHolidayRequestComponent
+  },
+  {
+    path: 'calendarView',
+    component: FullCalendarViewComponent
   },
   {path:'', component: MainTableComponent , pathMatch: 'full'},
   {path:'**', component:MainTableComponent}
