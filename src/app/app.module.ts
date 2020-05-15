@@ -34,6 +34,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { EditHolidayRequestComponent } from './mainSide/edit-holiday-request/edit-holiday-request/edit-holiday-request.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './mainSide/confirmation-dialog/confirmation-dialog/confirmation-dialog.component';
+import { FullCalendarViewComponent } from './mainSide/main-side/full-calendar/full-calendar-view/full-calendar-view.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 registerLocaleData(localePl, 'pl-Pl');
@@ -51,6 +53,7 @@ const keycloakService = new KeycloakService();
     MyHolidayRequestsComponent,
     EditHolidayRequestComponent,
     ConfirmationDialogComponent,
+    FullCalendarViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ const keycloakService = new KeycloakService();
     MatMomentDateModule,
     MatSortModule,
     MatDialogModule,
+    FullCalendarModule,
   ],
   providers: [
     {

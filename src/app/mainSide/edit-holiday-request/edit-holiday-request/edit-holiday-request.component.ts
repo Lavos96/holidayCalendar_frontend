@@ -58,13 +58,13 @@ export class EditHolidayRequestComponent implements OnInit, OnDestroy {
       if (this.editReqeust === null) {
         this.router.navigateByUrl('');
       } else {
-        if (this.keyCloakUserInfo.keyCloakUserProfile.email !== request.employee) {
+        //if (this.keyCloakUserInfo.keyCloakUserProfile.email !== request.employee) {
           if (!this.keyCloakService.isUserInRole('admin')) {
             this.router.navigateByUrl('');
           } else {
             this.isAdmin = true;
           }
-        }
+        //}
         this.updateFormValue();
         this.cdr.detectChanges();
       }

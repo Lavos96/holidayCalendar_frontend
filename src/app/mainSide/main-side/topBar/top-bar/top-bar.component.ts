@@ -36,4 +36,8 @@ export class TopBarComponent implements OnInit {
     this.router.navigateByUrl('myHolidaysRequest');
   }
 
+  moveToCalendarView(){
+    this.router.navigateByUrl('calendarView');
+  }
+
 }
