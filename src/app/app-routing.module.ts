@@ -7,6 +7,7 @@ import { MainTableComponent } from './mainSide/main-side/mainTable/main-table/ma
 import { MyHolidayRequestsComponent } from './mainSide/main-side/my-holiday-requests/my-holiday-requests/my-holiday-requests.component';
 import { EditHolidayRequestComponent } from './mainSide/edit-holiday-request/edit-holiday-request/edit-holiday-request.component';
 import { FullCalendarViewComponent } from './mainSide/main-side/full-calendar/full-calendar-view/full-calendar-view.component';
+import { ProposalToPdfComponent } from './mainSide/proposal-to-pdf/proposal-to-pdf/proposal-to-pdf.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'calendarView',
     component: FullCalendarViewComponent
+  },
+  {
+    path: 'printProposalToPdf',
+    component: ProposalToPdfComponent
   },
   {path:'', component: MainTableComponent , pathMatch: 'full'},
   {path:'**', component:MainTableComponent}

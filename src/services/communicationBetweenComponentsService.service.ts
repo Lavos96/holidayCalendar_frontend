@@ -6,6 +6,7 @@ import { RequestHoliday } from 'src/models/request';
 export class CommunicationBetweenComponentsService {
 
     requestToEditBehSubject: BehaviorSubject<RequestHoliday> = new BehaviorSubject(null);
+    requestToPrintBehSubject: BehaviorSubject<RequestHoliday> = new BehaviorSubject(null);
 
     constructor(){  }
 

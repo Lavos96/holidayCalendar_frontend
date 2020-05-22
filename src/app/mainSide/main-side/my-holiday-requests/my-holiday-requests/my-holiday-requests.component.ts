@@ -72,4 +72,9 @@ export class MyHolidayRequestsComponent implements OnInit {
     });
    }
 
+   proposalToPdf(element: RequestHoliday){
+    this.communicationBetweenComponentsService.requestToPrintBehSubject.next(element);
+    this.router.navigateByUrl('printProposalToPdf')
+  }
+
 }

@@ -1,0 +1,47 @@
+<div class="container" id="toPrint">
+    <ng-container *ngIf="holidayRequest">
+    <div class="upperBeam">
+        <div class="leftUpperBeam">
+            <span>.........................................</span>
+            <span>Dane Pracownika</span>
+        </div>
+        <div class="rightUpperBeam">
+            <span>.........................................</span>
+            <span>Miejscowość, data</span>
+            <br />
+            <br />
+            <span>.........................................</span>
+            <span>Dane Pracodawcy</span>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="proposalBody">
+        <h3>Wniosek o udzielenie urlopu</h3>
+        <span>Zwracam się z uprzejmą prośbą o udzielenie urlopu w wymiarze: {{howManyDaysOfHoliday}} dni</span>
+        <br/>
+        <span>w terminie od {{holidayRequest.startDate | date}} do {{holidayRequest.endDate | date}}.</span>
+    </div>
+    <br/>
+    <div class="userSignature">
+        <div class="rightUpperBeam">
+        <span>.........................................</span>
+        <span>Podpis Pracownika</span>
+        </div>
+    </div>
+    <br/>
+    <div>
+        <span>Wyrażam zgodę na udzielenie urlopu w wymiarze i terminie wskazanym we wniosku.</span>
+    </div>
+    <br/>
+    <div class="userSignature">
+        <div class="rightUpperBeam">
+        <span>.........................................</span>
+        <span>Podpis Pracodawcy</span>
+        </div>
+    </div>
+</ng-container>
+</div>
+<div class="btnPrint">
+<button mat-raised-button (click)="downloadPDF()">Drukuj do pdf</button>
+</div>
