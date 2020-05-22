@@ -26,6 +26,8 @@
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
     "@fullcalendar/interaction": "^4.4.0",
+    "dom-to-image": "^2.6.0",
+    "jspdf": "^1.5.3",
     "keycloak-angular": "^7.2.0",
     "keycloak-js": "^9.0.2",
     "moment": "^2.24.0",

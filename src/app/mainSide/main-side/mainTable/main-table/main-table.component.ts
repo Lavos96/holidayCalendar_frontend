@@ -144,4 +144,9 @@ export class MainTableComponent implements OnInit {
     this.router.navigateByUrl('editHolidayRequest');
   }
 
+  proposalToPdf(element: RequestHoliday){
+    this.communicationBetweenComponenstService.requestToPrintBehSubject.next(element);
+    this.router.navigateByUrl('printProposalToPdf')
+  }
+
 }

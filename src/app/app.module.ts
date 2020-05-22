@@ -36,6 +36,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './mainSide/confirmation-dialog/confirmation-dialog/confirmation-dialog.component';
 import { FullCalendarViewComponent } from './mainSide/main-side/full-calendar/full-calendar-view/full-calendar-view.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ProposalToPdfComponent } from './mainSide/proposal-to-pdf/proposal-to-pdf/proposal-to-pdf.component';
 
 
 registerLocaleData(localePl, 'pl-Pl');
@@ -54,6 +55,7 @@ const keycloakService = new KeycloakService();
     EditHolidayRequestComponent,
     ConfirmationDialogComponent,
     FullCalendarViewComponent,
+    ProposalToPdfComponent,
   ],
   imports: [
     BrowserModule,

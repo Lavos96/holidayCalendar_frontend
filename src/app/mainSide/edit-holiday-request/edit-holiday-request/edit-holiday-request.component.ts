@@ -25,8 +25,8 @@ export class EditHolidayRequestComponent implements OnInit, OnDestroy {
   selectedType;
   selectedStatus;
   holidayRequestForm = new FormGroup({
-    startDate: new FormControl('', [Validators.required, this.isValidDate(), this.isNotWeekend(), this.isStartDateBeforeEndDate()]),
-    endDate: new FormControl('', [Validators.required, this.isValidDate(), this.isNotWeekend(), this.isEndDateAfterStartDate()]),
+    startDate: new FormControl({value:'',disabled:true}, [Validators.required, this.isValidDate(), this.isNotWeekend(), this.isStartDateBeforeEndDate()]),
+    endDate: new FormControl({value:'',disabled:true}, [Validators.required, this.isValidDate(), this.isNotWeekend(), this.isEndDateAfterStartDate()]),
     reason: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     status: new FormControl('')
@@ -60,9 +60,10 @@ export class EditHolidayRequestComponent implements OnInit, OnDestroy {
       } else {
         //if (this.keyCloakUserInfo.keyCloakUserProfile.email !== request.employee) {
           if (!this.keyCloakService.isUserInRole('admin')) {
-            this.router.navigateByUrl('');
+            //this.router.navigateByUrl('');
           } else {
             this.isAdmin = true;
+            console.log('isAdmin: ', this.isAdmin);
           }
         //}
         this.updateFormValue();

@@ -74,6 +74,10 @@
                             <mat-icon>edit</mat-icon>
                             <span>Edytuj wniosek</span>
                         </button>
+                        <button mat-menu-item (click)="proposalToPdf(element)">
+                            <mat-icon>print</mat-icon>
+                        <span>Drukuj do pdf</span>
+                        </button>
                         <button mat-menu-item (click)="onCancelHolidayRequest(element)">
                             <mat-icon>cancel</mat-icon>
                             <span>Anuluj wniosek</span>
